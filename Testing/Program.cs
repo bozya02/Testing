@@ -14,11 +14,6 @@ namespace Testing
 
             Console.Write("Введите c:");
             double c = double.Parse(Console.ReadLine());
-            while (c == 0)
-            {
-                Console.Write("Ты инвалид\nВведите c:");
-                c = double.Parse(Console.ReadLine());
-            }
             Console.Write("Введите x:");
 
             double x = double.Parse(Console.ReadLine());
