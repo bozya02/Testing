@@ -6,16 +6,16 @@ namespace Testing
     {
         static void Main(string[] args)
         {
-            Console.Write("Введите a:");
+            Console.Write("Enter a:");
             double a = double.Parse(Console.ReadLine());
 
-            Console.Write("Введите b:");
+            Console.Write("Enter b:");
             double b = double.Parse(Console.ReadLine());
 
-            Console.Write("Введите c:");
+            Console.Write("Enter c:");
             double c = double.Parse(Console.ReadLine());
-            Console.Write("Введите x:");
 
+            Console.Write("Enter x:");
             double x = double.Parse(Console.ReadLine());
 
             double y = (c > 0 && b == 0) ? (x + a) / (x + c) : (c < 0 || b != 0) ? a * Math.Pow(x, 2) + Math.Pow(b, 2) * x : x/c;
