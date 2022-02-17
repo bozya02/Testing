@@ -7,28 +7,17 @@ namespace Testing
     {
         static void Main(string[] args)
         {
-            double s1;
-            double s2;
-            double s3;
             try
             {
                 Console.Write("Enter side 1: ");
-                s1 = double.Parse(Console.ReadLine());
+                double s1 = double.Parse(Console.ReadLine());
 
                 Console.Write("Enter side 2: ");
-                s2 = double.Parse(Console.ReadLine());
+                double s2 = double.Parse(Console.ReadLine());
 
                 Console.Write("Enter side 3: ");
-                s3 = double.Parse(Console.ReadLine());
-            }
-            catch (Exception ex)
-            {
-                Console.WriteLine(ex.Message);
-                return;
-            }
-
-            try
-            {
+                double s3 = double.Parse(Console.ReadLine());
+                
                 Triangle triangle = new Triangle(s1, s2, s3);
                 Console.WriteLine(triangle);
             }
