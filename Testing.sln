@@ -7,6 +7,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Prak1", "Testing\Prak1.cspr
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Prak2", "prak2\Prak2.csproj", "{8C20F833-2D59-4FDA-B708-3552979A7CE2}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Prak3", "Prak3\Prak3.csproj", "{AA313187-4F80-4FF4-A030-A2DF35F75511}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{8C20F833-2D59-4FDA-B708-3552979A7CE2}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{8C20F833-2D59-4FDA-B708-3552979A7CE2}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{8C20F833-2D59-4FDA-B708-3552979A7CE2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{AA313187-4F80-4FF4-A030-A2DF35F75511}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AA313187-4F80-4FF4-A030-A2DF35F75511}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AA313187-4F80-4FF4-A030-A2DF35F75511}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AA313187-4F80-4FF4-A030-A2DF35F75511}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
