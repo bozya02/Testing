@@ -7,19 +7,31 @@ namespace Prak3
     {
         public static void Main(string[] args)
         {
-            Console.WriteLine("Enter items count: ");
-            int count = int.Parse(Console.ReadLine());
-            List<int> list = GenerateList(count);
+            try
+            {
+                Console.WriteLine("Enter items count: ");
+                int count = int.Parse(Console.ReadLine());
+                List<int> list = GenerateList(count);
 
-            Console.WriteLine("Enter item for search: ");
-            int item = int.Parse(Console.ReadLine());
+                Console.WriteLine("Enter item for search: ");
+                int item = int.Parse(Console.ReadLine());
 
-            Console.WriteLine(FindValueByIndexOf(list, item));
-            Console.WriteLine(FindValueByFor(list, item));
+                Console.WriteLine(FindValueByIndexOf(list, item));
+                Console.WriteLine(FindValueByFor(list, item));
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
+            
         }
 
         public static List<int> GenerateList(int n)
         {
+            if (n <= 0)
+            {
+                throw new Exception("Items count don't less 0");
+            }
             List<int> list = new List<int>();
             Random rnd = new Random();
 
@@ -43,6 +55,7 @@ namespace Prak3
                 if (list[i] == n)
                     return i;
             }
+
             return -1;
         }
     }
