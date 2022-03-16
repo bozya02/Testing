@@ -12,17 +12,19 @@ namespace Prak3
             try
             {
                 e = double.Parse(Console.ReadLine());
+                if (e < 0)
+                    throw new Exception("fault must be greater than 0");
             }
-            catch
+            catch (Exception ex)
             {
-                Console.WriteLine("Entered value is not number");
+                Console.WriteLine(ex.Message);
                 return;
             }
             Console.WriteLine(HalfDivision(a, b, e));
         }
         public static double HalfDivision(double a, double b, double e)
         {
-            while (b - a > 2 * e)
+            while (b - a >  e)
             {
                 double c = (a + b) / 2;
 
