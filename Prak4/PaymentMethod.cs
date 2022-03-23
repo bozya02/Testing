@@ -1,9 +1,0 @@
-﻿using System;
-namespace Prak4
-{
-    public class PaymentMethod
-    {
-        public int Id { get; set; }
-        public string Name { get; set; }
-    }
-}
