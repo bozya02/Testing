@@ -1,0 +1,48 @@
+﻿<Window x:Class="Prak4.BuyWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Prak4"
+        mc:Ignorable="d"
+        Title="BuyWindow" Height="450" Width="800">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+        <StackPanel Grid.Row="0" Orientation="Horizontal">
+            <TextBox  Width="200" Height="100" HorizontalAlignment="Left"/>
+            <TextBlock Text="Товар" Grid.Row="0" Height="100" VerticalAlignment="Top"/>
+        </StackPanel>
+        <StackPanel Grid.Row="1" Orientation="Horizontal">
+            <TextBox  Width="200" Height="100" HorizontalAlignment="Left"/>
+            <TextBlock Text="Количество" Grid.Row="0" Height="100" VerticalAlignment="Top"/>
+        </StackPanel>
+        <StackPanel Grid.Row="2" Orientation="Horizontal">
+            <TextBox  Width="200" Height="100" HorizontalAlignment="Left"/>
+            <TextBlock Text="Оплата" Grid.Row="0" Height="100" VerticalAlignment="Top"/>
+        </StackPanel>
+        <StackPanel Grid.Row="3" Orientation="Horizontal">
+            <TextBox  Width="200" Height="100" HorizontalAlignment="Left"/>
+            <TextBlock Text="Фио" Grid.Row="0" Height="100" VerticalAlignment="Top"/>
+        </StackPanel>
+        <StackPanel Grid.Row="4" Orientation="Horizontal">
+            <TextBox  Width="200" Height="100" HorizontalAlignment="Left"/>
+            <TextBlock Text="Телефон" Grid.Row="0" Height="100" VerticalAlignment="Top"/>
+        </StackPanel>
+        <StackPanel Grid.Row="5" Orientation="Horizontal">
+            <TextBox  Width="200" Height="100" HorizontalAlignment="Left"/>
+            <TextBlock Text="Адрес" Grid.Row="0" Height="100" VerticalAlignment="Top"/>
+        </StackPanel>
+        <Button Content="OK" Click="Button_Click" Grid.Row="6"/>
+    </Grid>
+</Window>
