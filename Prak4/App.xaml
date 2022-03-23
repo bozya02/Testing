@@ -11,8 +11,8 @@
         </LinearGradientBrush>
 
         <LinearGradientBrush x:Key="Ukraine" EndPoint="0.5,1" StartPoint="0.5,0">
-            <GradientStop Color="Blue"/>
-            <GradientStop Color="Yellow" Offset="1"/>
+            <GradientStop Color="Blue" Offset="0.5"/>
+            <GradientStop Color="Yellow" Offset="0.5"/>
         </LinearGradientBrush>
 
         <Style TargetType="Grid">
