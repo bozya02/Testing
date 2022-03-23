@@ -10,6 +10,7 @@
             <GradientStop Color="Red" Offset="0.83"/>
         </LinearGradientBrush>
         
+        
         <Style TargetType="Grid">
             <Setter Property="Background" Value="{StaticResource LGB}"/>
         </Style>
