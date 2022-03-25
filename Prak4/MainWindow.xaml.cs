@@ -66,7 +66,23 @@ namespace Prak4
 
         private void Buy_Click(object sender, RoutedEventArgs e)
         {
-            (new BuyWindow()).Show();
+            (new BuyWindow(Products)).Show();
+        }
+
+        private void SortPricesClick(object sender, RoutedEventArgs e)
+        {
+            if ((sender as Button).Content == "\ue5cf")
+            {
+                (sender as Button).Content = "\ue5ce";
+                phonesGrid.ItemsSource = (phonesGrid.ItemsSource as List<Product>).OrderBy(x=>x.Price).ToList();
+            }
+            else 
+            {
+                (sender as Button).Content = "\ue5cf";
+                var temp = (phonesGrid.ItemsSource as List<Product>).OrderBy(x => x.Price).ToList();
+                temp.Reverse();
+                phonesGrid.ItemsSource = temp;
+            }
         }
     }
 }

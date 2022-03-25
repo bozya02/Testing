@@ -20,7 +20,7 @@
             <RowDefinition/>
         </Grid.RowDefinitions>
         <StackPanel Grid.Row="0" Orientation="Horizontal">
-            <TextBox  Width="200" Height="100" HorizontalAlignment="Left"/>
+            <ComboBox Width="200" x:Name="cbProducts" ItemsSource="{Binding Products}"/>
             <TextBlock Text="Товар" Grid.Row="0" Height="100" VerticalAlignment="Top"/>
         </StackPanel>
         <StackPanel Grid.Row="1" Orientation="Horizontal">
@@ -28,7 +28,7 @@
             <TextBlock Text="Количество" Grid.Row="0" Height="100" VerticalAlignment="Top"/>
         </StackPanel>
         <StackPanel Grid.Row="2" Orientation="Horizontal">
-            <TextBox  Width="200" Height="100" HorizontalAlignment="Left"/>
+            <ComboBox Width="200" x:Name="cbPaymentMethods" ItemsSource="{Binding PaymentMethods}"/>
             <TextBlock Text="Оплата" Grid.Row="0" Height="100" VerticalAlignment="Top"/>
         </StackPanel>
         <StackPanel Grid.Row="3" Orientation="Horizontal">

@@ -24,5 +24,9 @@ namespace Prak4.Classes
         public bool IsActive { get { return Active != "0"; }  }
         [JsonProperty("count")]
         public int Count { get; set; }
+        public override string ToString()
+        {
+            return Name;
+        }
     }
 }

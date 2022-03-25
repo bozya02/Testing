@@ -20,9 +20,11 @@
 
             <ComboBox Width="200" x:Name="cbProducer" ItemsSource="{Binding Producers}" SelectionChanged="ComboBox_SelectionChanged"/>
             <Button Content="Купить" Click="Buy_Click"/>
+            <TextBlock Text="Цены" TextAlignment="Center" Width="100" FontFamily="./Font/#Material Icons"/>
+            <Button Content="&#xe5cf;" FontSize="50" Width="50" FontFamily="./Font/#Material Icons" Click="SortPricesClick" />
         </StackPanel>
         
-        <DataGrid x:Name="phonesGrid" AutoGenerateColumns="False" ItemsSource="{Binding Products}" Grid.Row="1">
+        <DataGrid x:Name="phonesGrid" AutoGenerateColumns="False" ItemsSource="{Binding Products}" Grid.Row="1" IsReadOnly="True">
             <DataGrid.Columns>
                 <DataGridTextColumn Header="Наименование" Binding="{Binding Path=Name}" Width="1*" />
                 <DataGridTextColumn Header="Описание" Binding="{Binding Path=Description}" Width="1*"  />

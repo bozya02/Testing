@@ -11,6 +11,9 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using Prak4.Classes;
+using Newtonsoft.Json;
+using System.IO;
 
 namespace Prak4
 {
@@ -19,9 +22,15 @@ namespace Prak4
     /// </summary>
     public partial class BuyWindow : Window
     {
-        public BuyWindow()
+        public List<Product> Products { get; set; }
+        public List<string> PaymentMethods { get; set; }
+
+        public BuyWindow(List<Product> products)
         {
+            Products = products;
+            PaymentMethods = new List<string> { "Наличными при получении", "Банковская карта", "Google Pay", "Apple Pay" };
             InitializeComponent();
+            DataContext = this;
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
