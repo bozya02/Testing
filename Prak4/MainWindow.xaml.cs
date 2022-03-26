@@ -25,6 +25,7 @@ namespace Prak4
     {
         public List<Product> Products { get; set; }
         public List<string> Producers { get; set; }
+
         public MainWindow()
         {
             InitializeComponent();
@@ -41,32 +42,20 @@ namespace Prak4
             DataContext = this;
         }
 
-        private void ComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
-        {
-            var result = new List<Product>(Products);
-            try
-            {
-                if (cbProducer.SelectedItem as string == "Все")
-                    throw new Exception();
-
-                result = result.Where(x => x.Producer == cbProducer.SelectedItem as string).ToList();
-            }
-            catch { }
-            phonesGrid.ItemsSource = result;
-        }
-
         private void Search_Click(object sender, RoutedEventArgs e)
         {
             var result = new List<Product>(Products);
+            if (cbProducer.SelectedItem as string != "Все")
+                result = result.Where(x => x.Producer == cbProducer.SelectedItem as string).ToList();
             if (serchBox.Text != "")
-                result = result.Where(x => x.Name.Contains(serchBox.Text) || x.Description.Contains(serchBox.Text)).ToList();
+                result = result.Where(x => x.Name.ToLower().Contains(serchBox.Text.ToLower()) || x.Description.ToLower().Contains(serchBox.Text.ToLower())).ToList();
 
             phonesGrid.ItemsSource = result;
         }
 
         private void Buy_Click(object sender, RoutedEventArgs e)
         {
-            (new BuyWindow(Products)).Show();
+            (new BuyWindow(Products.Where(x=>x.IsActive && x.Count > 0 ).ToList())).ShowDialog();
         }
 
         private void SortPricesClick(object sender, RoutedEventArgs e)
@@ -83,6 +72,17 @@ namespace Prak4
                 temp.Reverse();
                 phonesGrid.ItemsSource = temp;
             }
+        }
+
+        private void serchBox_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            var result = new List<Product>(Products);
+            if (cbProducer.SelectedItem as string != "Все")
+                result = result.Where(x => x.Producer == cbProducer.SelectedItem as string).ToList();
+            if (serchBox.Text != "")
+                result = result.Where(x => x.Name.Contains(serchBox.Text) || x.Description.Contains(serchBox.Text)).ToList();
+
+            phonesGrid.ItemsSource = result;
         }
     }
 }

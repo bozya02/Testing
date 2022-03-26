@@ -15,10 +15,10 @@
             <RowDefinition Height="9*"/>
         </Grid.RowDefinitions>
         <StackPanel Orientation="Horizontal" Grid.Row="0">
-            <TextBox x:Name="serchBox" Width="300" HorizontalAlignment="Left"/>
+            <TextBox x:Name="serchBox" Width="300" HorizontalAlignment="Left" TextChanged="serchBox_TextChanged"/>
             <Button Content="Поиск" Click="Search_Click"/>
 
-            <ComboBox Width="200" x:Name="cbProducer" ItemsSource="{Binding Producers}" SelectionChanged="ComboBox_SelectionChanged"/>
+            <ComboBox Width="200" x:Name="cbProducer" ItemsSource="{Binding Producers}" SelectedIndex="6"/>
             <Button Content="Купить" Click="Buy_Click"/>
             <TextBlock Text="Цены" TextAlignment="Center" Width="100" FontFamily="./Font/#Material Icons"/>
             <Button Content="&#xe5cf;" FontSize="50" Width="50" FontFamily="./Font/#Material Icons" Click="SortPricesClick" />

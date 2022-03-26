@@ -35,7 +35,17 @@ namespace Prak4
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            this.Close();
+            if (tbCount.Text == "" || int.Parse(tbCount.Text) > (cbProducts.SelectedItem as Product).Count)
+            {
+                MessageBox.Show("Нет такого количества товара");
+            }
+            else
+                this.Close();
+        }
+
+        private void cdDelivery_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            spAddress.Visibility = cdDelivery.SelectedIndex == 0 ? Visibility.Visible : Visibility.Hidden;
         }
     }
 }

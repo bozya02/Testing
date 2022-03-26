@@ -9,6 +9,7 @@
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition/>
+            <ColumnDefinition Width="3*"/>
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
             <RowDefinition/>
@@ -18,31 +19,35 @@
             <RowDefinition/>
             <RowDefinition/>
             <RowDefinition/>
+            <RowDefinition/>
         </Grid.RowDefinitions>
-        <StackPanel Grid.Row="0" Orientation="Horizontal">
-            <ComboBox Width="200" x:Name="cbProducts" ItemsSource="{Binding Products}"/>
-            <TextBlock Text="Товар" Grid.Row="0" Height="100" VerticalAlignment="Top"/>
+        
+        <ComboBox  x:Name="cbProducts" Grid.Column="0" Grid.Row="0" ItemsSource="{Binding Products}" SelectedIndex="0"/>
+        <TextBlock Text="Товар" Grid.Row="0" Grid.Column="1"/>
+        
+        <TextBox x:Name="tbCount" Grid.Row="1" Grid.Column="0"/>
+        <TextBlock Text="Количество" Grid.Row="1" Grid.Column="1"/>
+        
+        <ComboBox x:Name="cbPaymentMethods" Grid.Column="0" Grid.Row="2" ItemsSource="{Binding PaymentMethods}" SelectedIndex="0"/>
+        <TextBlock Text="Оплата" Grid.Row="2" Grid.Column="1"/>
+        
+        <TextBox Grid.Row="3" Grid.Column="0"/>
+        <TextBlock Text="Фио" Grid.Row="3" Grid.Column="1"/>
+        
+        <TextBox Grid.Row="4" Grid.Column="0"/>
+        <TextBlock Text="Телефон" Grid.Row="4" Grid.Column="1"/>
+
+        <ComboBox Name="cdDelivery" Grid.Column="0" Grid.Row="5" SelectionChanged="cdDelivery_SelectionChanged">
+            <ComboBoxItem Content="Доставка"/>
+            <ComboBoxItem Content="Самовывоз"/>
+        </ComboBox>
+        <TextBlock Text="Способо доставки" Grid.Row="5" Grid.Column="1"/>
+
+        <StackPanel x:Name="spAddress" Grid.Row="6" Grid.Column="0" Visibility="Hidden">
+            <TextBlock Text="Адрес"/>
+            <TextBox/>
         </StackPanel>
-        <StackPanel Grid.Row="1" Orientation="Horizontal">
-            <TextBox  Width="200" Height="100" HorizontalAlignment="Left"/>
-            <TextBlock Text="Количество" Grid.Row="0" Height="100" VerticalAlignment="Top"/>
-        </StackPanel>
-        <StackPanel Grid.Row="2" Orientation="Horizontal">
-            <ComboBox Width="200" x:Name="cbPaymentMethods" ItemsSource="{Binding PaymentMethods}"/>
-            <TextBlock Text="Оплата" Grid.Row="0" Height="100" VerticalAlignment="Top"/>
-        </StackPanel>
-        <StackPanel Grid.Row="3" Orientation="Horizontal">
-            <TextBox  Width="200" Height="100" HorizontalAlignment="Left"/>
-            <TextBlock Text="Фио" Grid.Row="0" Height="100" VerticalAlignment="Top"/>
-        </StackPanel>
-        <StackPanel Grid.Row="4" Orientation="Horizontal">
-            <TextBox  Width="200" Height="100" HorizontalAlignment="Left"/>
-            <TextBlock Text="Телефон" Grid.Row="0" Height="100" VerticalAlignment="Top"/>
-        </StackPanel>
-        <StackPanel Grid.Row="5" Orientation="Horizontal">
-            <TextBox  Width="200" Height="100" HorizontalAlignment="Left"/>
-            <TextBlock Text="Адрес" Grid.Row="0" Height="100" VerticalAlignment="Top"/>
-        </StackPanel>
-        <Button Content="OK" Click="Button_Click" Grid.Row="6"/>
+
+        <Button Content="OK" Click="Button_Click" Grid.Row="7" Grid.Column="0"/>
     </Grid>
 </Window>

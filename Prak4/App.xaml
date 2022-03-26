@@ -4,23 +4,13 @@
              xmlns:local="clr-namespace:Prak4"
              StartupUri="MainWindow.xaml">
     <Application.Resources>
-        <LinearGradientBrush x:Key="Russia" EndPoint="0.5,1" StartPoint="0.5,0">
-            <GradientStop Color="White" Offset="0.25"/>
-            <GradientStop Color="#FF003AFF" Offset="0.5"/>
-            <GradientStop Color="Red" Offset="0.83"/>
-        </LinearGradientBrush>
-
-        <LinearGradientBrush x:Key="Ukraine" EndPoint="0.5,1" StartPoint="0.5,0">
-            <GradientStop Color="Blue" Offset="0.5"/>
-            <GradientStop Color="Yellow" Offset="0.5"/>
-        </LinearGradientBrush>
-
-        <Style TargetType="Grid">
-            <Setter Property="Background" Value="{StaticResource Russia}"/>
+        <Style TargetType="TextBlock">
+            <Setter Property="TextAlignment" Value="Left"/>
+            <Setter Property="VerticalAlignment" Value="Center"/>
         </Style>
 
-        <Style TargetType="DataGrid">
-            <Setter Property="Background" Value="{StaticResource Ukraine}"/>
+        <Style TargetType="ComboBox">
+            <Setter Property="VerticalAlignment" Value="Center"/>
         </Style>
     </Application.Resources>
 </Application>
