@@ -12,9 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
-using Prak4.Classes;
-using Newtonsoft.Json;
-using System.IO;
+using Prak4.DataBase;
 
 namespace Prak4
 {
@@ -24,65 +22,73 @@ namespace Prak4
     public partial class MainWindow : Window
     {
         public List<Product> Products { get; set; }
-        public List<string> Producers { get; set; }
+        public List<Product> ProductsForSearch { get; set; }
+        public List<Producer> Producers { get; set; }
 
         public MainWindow()
         {
             InitializeComponent();
-            Products = JsonConvert.DeserializeObject<List<Product>>(File.ReadAllText("..\\..\\Toys.json"));
-
-            Producers = new List<string>();
-            foreach (var prod in Products)
-            {
-                if (!Producers.Contains(prod.Producer))
-                    Producers.Add(prod.Producer);
-            }
-            Producers.Add("Все");
+            Producers = ToysShopEntities.GetContext().Producer.ToList();
+            Products = ToysShopEntities.GetContext().Product.ToList();
+            ProductsForSearch = Products;
+            Producers.Insert(0, new Producer { Name = "Все" });
 
             DataContext = this;
         }
 
-        private void Search_Click(object sender, RoutedEventArgs e)
+        private void tbSearch_TextChanged(object sender, TextChangedEventArgs e)
         {
-            var result = new List<Product>(Products);
-            if (cbProducer.SelectedItem as string != "Все")
-                result = result.Where(x => x.Producer == cbProducer.SelectedItem as string).ToList();
-            if (serchBox.Text != "")
-                result = result.Where(x => x.Name.ToLower().Contains(serchBox.Text.ToLower()) || x.Description.ToLower().Contains(serchBox.Text.ToLower())).ToList();
-
-            phonesGrid.ItemsSource = result;
+            ApplyFiltres();
         }
 
-        private void Buy_Click(object sender, RoutedEventArgs e)
+        private void cbProducer_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            (new BuyWindow(Products.Where(x=>x.IsActive && x.Count > 0 ).ToList())).ShowDialog();
+            ApplyFiltres();
         }
 
-        private void SortPricesClick(object sender, RoutedEventArgs e)
+        private void ApplyFiltres()
         {
-            if ((sender as Button).Content == "\ue5cf")
+            var text = tbSearch.Text.ToLower();
+            ProductsForSearch = Products.Where(p => p.Name.ToLower().Contains(text) || p.Description.ToLower().Contains(text)).ToList();
+
+            var producer = cbProducer.SelectedItem as Producer;
+            if (producer.Name != "Все")
+                ProductsForSearch = ProductsForSearch.Where(p => p.Producer == producer).ToList();
+
+            dgProducts.ItemsSource = ProductsForSearch;
+        }
+
+
+        private void btnBuy_Click(object sender, RoutedEventArgs e)
+        {
+            var product = dgProducts.SelectedItem as Product;
+            if (product == null)
             {
-                (sender as Button).Content = "\ue5ce";
-                phonesGrid.ItemsSource = (phonesGrid.ItemsSource as List<Product>).OrderBy(x=>x.Price).ToList();
+                MessageBox.Show("Ты дебил?\nВыбери для начала продукт","Ошибка", MessageBoxButton.OK, MessageBoxImage.Hand);
+                return;
             }
-            else 
-            {
-                (sender as Button).Content = "\ue5cf";
-                var temp = (phonesGrid.ItemsSource as List<Product>).OrderBy(x => x.Price).ToList();
-                temp.Reverse();
-                phonesGrid.ItemsSource = temp;
-            }
+
+            Window dialog = new BuyWindow(product);
+
+            dialog.ShowDialog();
+
+            dgProducts.Items.Refresh();
         }
 
-        private void serchBox_TextChanged(object sender, TextChangedEventArgs e)
+        private void btnSort_Click(object sender, RoutedEventArgs e)
         {
-            var result = new List<Product>(Products);
-            if (cbProducer.SelectedItem as string != "Все")
-                result = result.Where(x => x.Producer == cbProducer.SelectedItem as string).ToList();
-            if (serchBox.Text != "")
-                result = result.Where(x => x.Name.Contains(serchBox.Text) || x.Description.Contains(serchBox.Text)).ToList();
+            if (btnSort.Content.ToString() == "/\\")
+            {
+                Products = Products.OrderByDescending(x => x.Price).ToList();
+                btnSort.Content = "\\/";
+            }
+            else
+            {
+                Products = Products.OrderBy(x => x.Price).ToList();
+                btnSort.Content = "/\\";
+            }
 
-            phonesGrid.ItemsSource = result;
+            dgProducts.ItemsSource = Products;
         }
     }
 }

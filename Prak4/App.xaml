@@ -4,13 +4,31 @@
              xmlns:local="clr-namespace:Prak4"
              StartupUri="MainWindow.xaml">
     <Application.Resources>
+        <Style TargetType="Grid">
+            <Setter Property="Background" Value="Bisque"/>
+        </Style>
+        
         <Style TargetType="TextBlock">
             <Setter Property="TextAlignment" Value="Left"/>
             <Setter Property="VerticalAlignment" Value="Center"/>
+            <Setter Property="Margin" Value="5"/>
         </Style>
 
+        <Style TargetType="TextBox">
+            <Setter Property="Margin" Value="5"/>
+        </Style>
+        
         <Style TargetType="ComboBox">
-            <Setter Property="VerticalAlignment" Value="Center"/>
+            <Setter Property="VerticalContentAlignment" Value="Center"/>
+            <Setter Property="Margin" Value="5"/>
+        </Style>
+
+        <Style TargetType="DataGridCell">
+            <Setter Property="Background" Value="PeachPuff"/>
+        </Style>
+
+        <Style TargetType="Button">
+            <Setter Property="Margin" Value="5"/>
         </Style>
     </Application.Resources>
 </Application>

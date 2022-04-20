@@ -8,8 +8,10 @@
         Title="BuyWindow" Height="450" Width="800">
     <Grid>
         <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="0.2*"/>
             <ColumnDefinition/>
-            <ColumnDefinition Width="3*"/>
+            <ColumnDefinition/>
+            <ColumnDefinition Width="0.2*"/>
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
             <RowDefinition/>
@@ -21,33 +23,46 @@
             <RowDefinition/>
             <RowDefinition/>
         </Grid.RowDefinitions>
-        
-        <ComboBox  x:Name="cbProducts" Grid.Column="0" Grid.Row="0" ItemsSource="{Binding Products}" SelectedIndex="0"/>
+
         <TextBlock Text="Товар" Grid.Row="0" Grid.Column="1"/>
+        <TextBox Text="{Binding Product.Name}" Grid.Row="0" Grid.Column="2" IsEnabled="False"/>
         
-        <TextBox x:Name="tbCount" Grid.Row="1" Grid.Column="0"/>
         <TextBlock Text="Количество" Grid.Row="1" Grid.Column="1"/>
-        
-        <ComboBox x:Name="cbPaymentMethods" Grid.Column="0" Grid.Row="2" ItemsSource="{Binding PaymentMethods}" SelectedIndex="0"/>
+        <TextBox x:Name="tbCount" Grid.Row="1" Grid.Column="2"/>
+
         <TextBlock Text="Оплата" Grid.Row="2" Grid.Column="1"/>
-        
-        <TextBox Grid.Row="3" Grid.Column="0"/>
-        <TextBlock Text="Фио" Grid.Row="3" Grid.Column="1"/>
-        
-        <TextBox Grid.Row="4" Grid.Column="0"/>
-        <TextBlock Text="Телефон" Grid.Row="4" Grid.Column="1"/>
-
-        <ComboBox Name="cdDelivery" Grid.Column="0" Grid.Row="5" SelectionChanged="cdDelivery_SelectionChanged">
-            <ComboBoxItem Content="Доставка"/>
-            <ComboBoxItem Content="Самовывоз"/>
+        <ComboBox x:Name="cbPaymentMethod" Grid.Column="2" Grid.Row="2" ItemsSource="{Binding PaymentMethods}">
+            <ComboBox.ItemTemplate>
+                <DataTemplate>
+                    <TextBlock Text="{Binding Name}"/>
+                </DataTemplate>
+            </ComboBox.ItemTemplate>
         </ComboBox>
+        
+        <TextBlock Text="Клиент" Grid.Row="3" Grid.Column="1"/>
+        <ComboBox x:Name="cbBuyer" Grid.Row="3" Grid.Column="2" ItemsSource="{Binding Buyers}" SelectionChanged="cbBuyer_SelectionChanged">
+            <ComboBox.ItemTemplate>
+                <DataTemplate>
+                    <TextBlock Text="{Binding FIO}"/>
+                </DataTemplate>
+            </ComboBox.ItemTemplate>
+        </ComboBox>
+
+        <TextBlock Text="Телефон" Grid.Row="4" Grid.Column="1"/>
+        <TextBox x:Name="tbPhone" Grid.Row="4" Grid.Column="2" IsEnabled="False"/>
+
         <TextBlock Text="Способо доставки" Grid.Row="5" Grid.Column="1"/>
+        <ComboBox Name="cdDelivery" Grid.Column="2" Grid.Row="5" SelectionChanged="cdDelivery_SelectionChanged" ItemsSource="{Binding DeliveryTypes}">
+            <ComboBox.ItemTemplate>
+                <DataTemplate>
+                    <TextBlock Text="{Binding Name}"/>
+                </DataTemplate>
+            </ComboBox.ItemTemplate>
+        </ComboBox>
 
-        <StackPanel x:Name="spAddress" Grid.Row="6" Grid.Column="0" Visibility="Hidden">
-            <TextBlock Text="Адрес"/>
-            <TextBox/>
-        </StackPanel>
+        <TextBlock x:Name="tblAddress" Text="Адрес" Grid.Row="6" Grid.Column="1"/>
+        <TextBox x:Name="tbAddress" Grid.Row="6" Grid.Column="2" Visibility="Hidden"/>
 
-        <Button Content="OK" Click="Button_Click" Grid.Row="7" Grid.Column="0"/>
+        <Button x:Name="btnOk" Content="OK" Grid.Row="7" Grid.Column="1" Grid.ColumnSpan="2" Click="btnOk_Click"/>
     </Grid>
 </Window>
