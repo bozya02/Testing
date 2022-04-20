@@ -14,6 +14,7 @@ using System.Windows.Shapes;
 using Newtonsoft.Json;
 using Prak4.DataBase;
 using System.IO;
+using System.ComponentModel.DataAnnotations;
 
 namespace Prak4
 {
@@ -36,6 +37,7 @@ namespace Prak4
             Buyers = ToysShopEntities.GetContext().Buyer.ToList();
             DeliveryTypes = ToysShopEntities.GetContext().DeliveryType.ToList();
             InitializeComponent();
+            cdDelivery.SelectedIndex = 0;
             DataContext = this;
         }
 
