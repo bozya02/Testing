@@ -25,16 +25,16 @@
         <ComboBox  x:Name="cbProducts" Grid.Column="0" Grid.Row="0" ItemsSource="{Binding Products}" SelectedIndex="0"/>
         <TextBlock Text="Товар" Grid.Row="0" Grid.Column="1"/>
         
-        <TextBox x:Name="tbCount" Grid.Row="1" Grid.Column="0"/>
+        <TextBox x:Name="tbCount" Grid.Row="1" Grid.Column="0" Text="0"/>
         <TextBlock Text="Количество" Grid.Row="1" Grid.Column="1"/>
         
         <ComboBox x:Name="cbPaymentMethods" Grid.Column="0" Grid.Row="2" ItemsSource="{Binding PaymentMethods}" SelectedIndex="0"/>
         <TextBlock Text="Оплата" Grid.Row="2" Grid.Column="1"/>
         
-        <TextBox Grid.Row="3" Grid.Column="0"/>
+        <TextBox x:Name="tbName" Grid.Row="3" Grid.Column="0"/>
         <TextBlock Text="Фио" Grid.Row="3" Grid.Column="1"/>
         
-        <TextBox Grid.Row="4" Grid.Column="0"/>
+        <TextBox x:Name="tbPhone" Grid.Row="4" Grid.Column="0"/>
         <TextBlock Text="Телефон" Grid.Row="4" Grid.Column="1"/>
 
         <ComboBox Name="cdDelivery" Grid.Column="0" Grid.Row="5" SelectionChanged="cdDelivery_SelectionChanged">

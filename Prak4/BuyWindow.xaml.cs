@@ -14,6 +14,7 @@ using System.Windows.Shapes;
 using Prak4.Classes;
 using Newtonsoft.Json;
 using System.IO;
+using System.ComponentModel.DataAnnotations;
 
 namespace Prak4
 {
@@ -30,17 +31,42 @@ namespace Prak4
             Products = products;
             PaymentMethods = new List<string> { "Наличными при получении", "Банковская карта", "Google Pay", "Apple Pay" };
             InitializeComponent();
+            cdDelivery.SelectedIndex = 0;
             DataContext = this;
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            if (tbCount.Text == "" || int.Parse(tbCount.Text) > (cbProducts.SelectedItem as Product).Count)
+            try
             {
-                MessageBox.Show("Нет такого количества товара");
+                var order = new Order
+                {
+                    ProductName = cbProducts.SelectedItem.ToString(),
+                    Сount =  int.Parse(tbCount.Text),
+                    DeliveryType = cdDelivery.SelectedItem.ToString(),
+                    BuyerName = tbName.Text,
+                    PaymentMethod = cbPaymentMethods.SelectedItem.ToString(),
+                    PhoneNumber = tbPhone.Text
+                };
+                var messageBoxText = "";
+                var results = new List<System.ComponentModel.DataAnnotations.ValidationResult>();
+                var context = new ValidationContext(order);
+                if (!Validator.TryValidateObject(order, context, results, true))
+                {
+                    foreach (var error in results)
+                    {
+                        messageBoxText += $"{error.ErrorMessage}\n";
+                    }
+                }
+                if (messageBoxText == "")
+                    Close();
+                else
+                    MessageBox.Show(messageBoxText);
             }
-            else
-                this.Close();
+            catch (Exception ex)
+            {
+                MessageBox.Show("Ошибки в веденных данных");
+            }
         }
 
         private void cdDelivery_SelectionChanged(object sender, SelectionChangedEventArgs e)
