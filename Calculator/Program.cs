@@ -11,7 +11,7 @@ namespace Calculator
         public static Dictionary<string, Func<double, double, double>> Operators = new Dictionary<string, Func<double, double, double>>()
         {
             {"+", Sum },
-            {"-", Substract},
+            {"-", Subtract},
             {"*", Multiple },
             {"/", Divide }
         };
@@ -44,7 +44,7 @@ namespace Calculator
         {
             return a * b;
         }
-        public static double Substract(double a, double b)
+        public static double Subtract(double a, double b)
         {
             return a - b;
         }
