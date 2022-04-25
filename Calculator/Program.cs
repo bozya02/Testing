@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Calculator
 {
-    class Program
+    public class Program
     {
         public static Dictionary<string, Func<double, double, double>> Operators = new Dictionary<string, Func<double, double, double>>()
         {
@@ -15,7 +15,7 @@ namespace Calculator
             {"*", Multiple },
             {"/", Divide }
         };
-        static void Main(string[] args)
+        public static void Main(string[] args)
         {
             try
             {
