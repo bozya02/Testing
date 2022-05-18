@@ -65,11 +65,13 @@ namespace Prak4
                 MessageBox.Show("Ты богатый что-ли?\nНаш ничего от тебя не надо", "Ошибка", MessageBoxButton.OK, MessageBoxImage.Hand);
                 return;
             }
+            /*
             else if (cbBuyer.SelectedItem as Buyer == null)
             {
                 MessageBox.Show("Выбери покупателя\nЧел ты, чел ты...", "Ошибка", MessageBoxButton.OK, MessageBoxImage.Hand);
                 return;
             }
+            */
             else if (cbPaymentMethod.SelectedItem as Payment == null)
             {
                 MessageBox.Show("Выбери способ оплаты\nЧел ты, чел ты...", "Ошибка", MessageBoxButton.OK, MessageBoxImage.Hand);
@@ -84,7 +86,7 @@ namespace Prak4
             Order order = new Order
             {
                 Address = tbAddress.Text.Length == 0 ? null : tbAddress.Text,
-                BuyerId = (cbBuyer.SelectedItem as Buyer).Id,
+                BuyerId = 1, //(cbBuyer.SelectedItem as Buyer).Id,
                 Count = count,
                 DeliveryTypeId = (cdDelivery.SelectedItem as DeliveryType).Id,
                 ProductId = Product.Id,
@@ -101,7 +103,7 @@ namespace Prak4
 
         private void cbBuyer_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            tbPhone.Text = (cbBuyer.SelectedItem as Buyer).Phone;
+            tbPhone.Text = "228";//(cbBuyer.SelectedItem as Buyer).Phone;
             
         }
     }
